@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Circuito Fácil — ambiente de aprendizagem e simulação de circuitos eletrônicos da Soluções Digitais RC.">
+  <title>Circuito Fácil | Soluções Digitais RC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Circuito Fácil início">
+        <span class="brand-mark">CF<span>+</span></span>
+        <span class="brand-copy">
+          <strong>Circuito Fácil</strong>
+          <small>por Soluções Digitais RC</small>
+        </span>
+      </a>
+      <div class="topbar-center">
+        <span class="status-dot"></span>
+        <span>Ambiente de simulação eletrônica</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="button button-quiet" id="helpButton" type="button">
+          <span aria-hidden="true">ⓘ</span> Como usar
+        </button>
+        <a class="button button-primary" href="https://www.falstad.com/circuit/circuitjs.html?whiteBackground=true" target="_blank" rel="noopener noreferrer">
+          Abrir simulador ↗
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">LABORATÓRIO ELETRÔNICO</p>
+          <h1>Monte. Simule. Aprenda.</h1>
+          <p class="welcome-copy">Explore circuitos eletrônicos e acompanhe tensões, correntes e formas de onda em um só lugar.</p>
+        </div>
+        <div class="connection-badge"><span class="status-dot"></span> Motor externo conectado via navegador</div>
+      </section>
+
+      <section class="quick-stats" aria-label="Recursos disponíveis">
+        <article class="stat-card">
+          <span class="stat-icon blue">⌁</span>
+          <div><strong>CC e transitórios</strong><small>Análises no simulador</small></div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon violet">⌁</span>
+          <div><strong>Componentes eletrônicos</strong><small>Resistores, diodos, LEDs e mais</small></div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon green">↗</span>
+          <div><strong>Gráficos em tempo real</strong><small>Visualize o comportamento</small></div>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <aside class="sidebar" id="sidebar">
+          <div class="side-section">
+            <div class="section-heading"><span>01</span><h2>Comece por aqui</h2></div>
+            <p class="side-description">Escolha uma atividade para abrir o simulador e montar seu circuito.</p>
+            <button class="activity-card active" data-activity="livre" type="button">
+              <span class="activity-icon">⌘</span>
+              <span><strong>Montagem livre</strong><small>Comece do zero</small></span>
+              <span class="activity-arrow">›</span>
+            </button>
+            <button class="activity-card" data-activity="resistor" type="button">
+              <span class="activity-icon">Ω</span>
+              <span><strong>Lei de Ohm</strong><small>Tensão, resistência e corrente</small></span>
+              <span class="activity-arrow">↗</span>
+            </button>
+            <button class="activity-card" data-activity="led" type="button">
+              <span class="activity-icon">◉</span>
+              <span><strong>LED com resistor</strong><small>Aprenda a limitar a corrente</small></span>
+              <span class="activity-arrow">↗</span>
+            </button>
+            <button class="activity-card" data-activity="capacitor" type="button">
+              <span class="activity-icon">Ⅱ</span>
+              <span><strong>Capacitor</strong><small>Observe a carga e descarga</small></span>
+              <span class="activity-arrow">↗</span>
+            </button>
+            <p class="activity-note" id="activityNote">O simulador abre em modo de montagem livre. Use os menus dele para inserir e conectar componentes.</p>
+          </div>
+
+          <div class="side-section component-section">
+            <div class="section-heading"><span>02</span><h2>Biblioteca de componentes</h2></div>
+            <p class="side-description">Selecione um componente para ver sua função e a unidade de medida.</p>
+            <div class="component-grid" aria-label="Biblioteca visual de componentes">
+              <button class="component-item" type="button" data-component="resistor" aria-pressed="false">
+                <svg class="component-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de resistor"><path d="M3 21H20M60 21H77"/><rect x="20" y="12" width="40" height="18" rx="4"/><path class="band" d="M29 12V30M37 12V30M45 12V30M53 12V30"/></svg>
+                <strong>Resistor</strong><small>Ω · kΩ</small>
+              </button>
+              <button class="component-item" type="button" data-component="led" aria-pressed="false">
+                <svg class="component-drawing led-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de LED"><path d="M3 21H25M55 21H77"/><path d="M25 10L25 32L48 21Z"/><path d="M55 10V32"/><path class="ray" d="M43 8L52 1M49 14L59 7"/></svg>
+                <strong>LED</strong><small>Polaridade</small>
+              </button>
+              <button class="component-item" type="button" data-component="diodo" aria-pressed="false">
+                <svg class="component-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de diodo"><path d="M3 21H25M55 21H77"/><path d="M25 10L25 32L49 21Z"/><path d="M52 10V32"/></svg>
+                <strong>Diodo</strong><small>Sentido da corrente</small>
+              </button>
+              <button class="component-item" type="button" data-component="transistor" aria-pressed="false">
+                <svg class="component-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de transistor"><circle cx="40" cy="21" r="15"/><path d="M8 21H30M40 6V1M40 36V41M30 14L48 28M30 28L48 14"/></svg>
+                <strong>Transistor</strong><small>NPN / PNP</small>
+              </button>
+              <button class="component-item" type="button" data-component="capacitor" aria-pressed="false">
+                <svg class="component-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de capacitor"><path d="M3 21H32M48 21H77M32 8V34M48 8V34"/></svg>
+                <strong>Capacitor</strong><small>F · µF</small>
+              </button>
+              <button class="component-item" type="button" data-component="fonte" aria-pressed="false">
+                <svg class="component-drawing source-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de fonte de tensão"><path d="M3 21H22M58 21H77"/><circle cx="40" cy="21" r="18"/><path d="M34 14H46M40 8V20M34 28H46"/></svg>
+                <strong>Fonte CC</strong><small>V · volts</small>
+              </button>
+              <button class="component-item" type="button" data-component="interruptor" aria-pressed="false">
+                <svg class="component-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de interruptor"><path d="M3 27H25M55 27H77M25 27L52 10"/><circle cx="25" cy="27" r="3"/><circle cx="55" cy="27" r="3"/></svg>
+                <strong>Interruptor</strong><small>Abre / fecha</small>
+              </button>
+              <button class="component-item" type="button" data-component="fio" aria-pressed="false">
+                <svg class="component-drawing wire-drawing" viewBox="0 0 80 42" role="img" aria-label="Desenho de fio de ligação"><path d="M4 30V12H76V30"/><circle cx="4" cy="30" r="3"/><circle cx="76" cy="30" r="3"/></svg>
+                <strong>Fio</strong><small>Conexão</small>
+              </button>
+            </div>
+            <div class="component-detail" id="componentDetail" aria-live="polite">
+              <strong id="componentDetailTitle">Conheça os componentes</strong>
+              <p id="componentDetailText">Clique em uma figura para ver para que serve e qual unidade costuma ser usada.</p>
+            </div>
+            <p class="small-note">As figuras são um guia de aprendizagem. Para inserir componentes no simulador, use os menus da área central.</p>
+          </div>
+
+          <div class="sidebar-footer">
+            <span class="footer-mark">RC</span>
+            <span><strong>Soluções Digitais RC</strong><small>Versão experimental 3.0</small></span>
+          </div>
+        </aside>
+
+        <section class="simulator-panel">
+          <div class="panel-toolbar">
+            <div class="panel-title">
+              <span class="live-indicator"></span>
+              <div><h2 id="workspaceTitle">Área de simulação</h2><p id="workspaceSubtitle">Monte o circuito diretamente no motor de simulação.</p></div>
+            </div>
+            <div class="toolbar-actions">
+              <button class="button button-quiet" id="reloadButton" type="button" title="Recarregar o simulador">↻ <span>Reiniciar área</span></button>
+              <button class="button button-quiet" id="toggleResultsButton" type="button" aria-expanded="true">Ocultar painel de apoio <span aria-hidden="true">⌄</span></button>
+            </div>
+          </div>
+          <div class="simulator-frame-wrap">
+            <div class="frame-loading" id="frameLoading">
+              <div class="spinner"></div>
+              <strong>Carregando o simulador</strong>
+              <span>É necessária uma conexão com a internet.</span>
+            </div>
+            <iframe
+              id="simulatorFrame"
+              title="Simulador eletrônico CircuitJS1"
+              src="https://www.falstad.com/circuit/circuitjs.html?whiteBackground=true"
+              loading="eager"
+              allow="clipboard-read; clipboard-write"
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+            <div class="frame-fallback" id="frameFallback" hidden>
+              <strong>Não foi possível confirmar o carregamento.</strong>
+              <p>Abra o simulador diretamente em uma nova aba. Alguns navegadores ou redes podem bloquear conteúdo incorporado.</p>
+              <a class="button button-primary" href="https://www.falstad.com/circuit/circuitjs.html?whiteBackground=true" target="_blank" rel="noopener noreferrer">Abrir simulador ↗</a>
+            </div>
+          </div>
+          <div class="simulator-footer">
+            <span><span class="status-dot"></span> O cálculo é executado pelo CircuitJS1</span>
+            <button id="openDirectButton" class="text-button" type="button">Abrir em nova aba ↗</button>
+          </div>
+        </section>
+
+        <aside class="results-panel" id="resultsPanel">
+          <div class="results-heading">
+            <div><p class="eyebrow">PAINEL DE APOIO</p><h2>Resultados & ajuda</h2></div>
+            <button class="icon-button" id="closeResultsButton" type="button" aria-label="Ocultar painel de apoio">×</button>
+          </div>
+          <div class="notice-card">
+            <span class="notice-icon">i</span>
+            <div><strong>Como funciona</strong><p>Monte e execute o circuito dentro da área central. Os valores e gráficos do motor aparecem na própria área do simulador.</p></div>
+          </div>
+          <div class="result-section">
+            <h3>Roteiro de teste</h3>
+            <ol class="test-list">
+              <li><span>1</span><div><strong>Fonte CC</strong><small>Adicione uma fonte de tensão contínua.</small></div></li>
+              <li><span>2</span><div><strong>Resistor de 1 kΩ</strong><small>Conecte-o em série com a fonte.</small></div></li>
+              <li><span>3</span><div><strong>Feche o circuito</strong><small>Use fios e confira o caminho da corrente.</small></div></li>
+              <li><span>4</span><div><strong>Confira os valores</strong><small>Compare com a Lei de Ohm.</small></div></li>
+            </ol>
+          </div>
+          <div class="formula-card">
+            <span class="formula-label">LEI DE OHM</span>
+            <div class="formula">I = V ÷ R</div>
+            <p>Exemplo: 5 V ÷ 1.000 Ω = <strong>5 mA</strong></p>
+          </div>
+          <div class="result-section">
+            <h3>Importante saber</h3>
+            <ul class="bullet-list">
+              <li>O simulador incorporado precisa de internet.</li>
+              <li>Esta versão ainda não lê automaticamente os resultados internos do simulador.</li>
+              <li>O circuito é montado e calculado pelo motor CircuitJS1, não por fórmulas fictícias desta interface.</li>
+            </ul>
+          </div>
+          <div class="license-note">
+            <strong>Projeto em evolução</strong>
+            <p>O CircuitJS1 é um projeto de código aberto sob GPL-2.0-or-later. Antes de redistribuir uma versão modificada, consulte a licença e cumpra as obrigações aplicáveis.</p>
+            <a href="https://github.com/sharpie7/circuitjs1" target="_blank" rel="noopener noreferrer">Consultar código e licença ↗</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="bottom-info">
+        <div><span class="bottom-icon">✓</span><p><strong>Simulação real</strong><small>Os cálculos são feitos pelo motor CircuitJS1.</small></p></div>
+        <div><span class="bottom-icon">⌂</span><p><strong>Projeto local</strong><small>Esta interface pode ser aberta no computador.</small></p></div>
+        <div><span class="bottom-icon">↗</span><p><strong>Próxima evolução</strong><small>Integrar salvamento de projetos e resultados.</small></p></div>
+      </section>
+      <footer class="page-footer">
+        <span>© <span id="year"></span> Soluções Digitais RC</span>
+        <span>Circuito Fácil · Versão de aprendizagem 3.0</span>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="helpDialog" class="help-dialog">
+    <form method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">GUIA RÁPIDO</p><h2>Como usar o Circuito Fácil</h2></div><button class="icon-button" aria-label="Fechar ajuda">×</button></div>
+      <ol class="dialog-steps">
+        <li><strong>Use os menus do simulador.</strong><br>O CircuitJS1 tem menus próprios para adicionar fontes, resistores, diodos, transistores, capacitores e fios.</li>
+        <li><strong>Conecte os terminais.</strong><br>Os componentes precisam estar eletricamente conectados, não apenas próximos visualmente.</li>
+        <li><strong>Observe o comportamento.</strong><br>O simulador pode mostrar correntes animadas, tensões e gráficos, dependendo do circuito.</li>
+        <li><strong>Salve ou exporte pelo próprio motor.</strong><br>Use os comandos disponíveis no menu do CircuitJS1. O salvamento próprio do Circuito Fácil ainda será desenvolvido.</li>
+      </ol>
+      <p class="dialog-warning">Esta interface é uma camada visual experimental. Ela não substitui validação profissional nem deve ser usada, sem verificação, para garantir segurança de circuitos físicos.</p>
+      <button class="button button-primary dialog-done" type="submit">Entendi</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

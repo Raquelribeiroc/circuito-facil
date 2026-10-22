@@ -1,0 +1,16 @@
+CIRCUITO FÁCIL — SOLUÇÕES DIGITAIS RC
+Versão experimental 3.0
+
+COMO ABRIR
+1. Extraia este ZIP para uma pasta no computador.
+2. Abra a pasta e dê dois cliques em index.html.
+3. Mantenha conexão com a internet para carregar o simulador externo.
+
+NOVIDADES VISUAIS
+- Biblioteca visual com desenhos vetoriais de 8 componentes.
+- Clique em um componente para ler sua função e unidade de medida.
+- Interface em azul, fundo claro e cartões mais organizados.
+- Atividades guiadas para Lei de Ohm, LED e capacitor.
+
+IMPORTANTE
+As figuras da biblioteca são educativas e não inserem automaticamente peças no simulador. O simulador CircuitJS1 é carregado de um site externo e exige internet. Esta versão ainda não lê os resultados do motor externo para mostrar tensão e corrente em um painel próprio. Verifique a licença do CircuitJS1 antes de redistribuir uma versão comercial. Não use o protótipo como ferramenta de projeto elétrico profissional sem validação independente.
